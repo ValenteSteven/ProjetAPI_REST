@@ -58,7 +58,7 @@ class TestController {
     def updateBook(Book b){
         if( b != null){
             b.save(flush:true)
-            render b as JSON
+            render (status: 200,text: "livre mis a jour" )
         }
 
         else {
@@ -116,14 +116,13 @@ class TestController {
 
     // creation d'un livre
     def createBook(Book b){
-
         Book newBook = b.save(flush:true)
 
         if (newBook != null){
             render (status: 200,text: "OK" )
         }
         else {
-            render (status: 404,text: "le livre devant etre ajouté n'est pas valide" )
+            render (status: 404,text: "la bibliothèque devant etre ajouté n'est pas valide" )
         }
     }
 
@@ -166,25 +165,6 @@ class TestController {
 
     }
 
-
-    // editer un livre dans une bibliotheque
-    def updateBookByLibrary(Library l, Book b) {
-        System.out.println(b.id)
-        if (l != null) {
-
-            for (Book book : l.getBooks()) {
-                //System.out.println("id url"+l.id + " id library " + l.id)
-                if (b.id == book.id){
-                    b.save(flush:true)
-                    break
-                }
-            }
-            render (status: 404,text: "le livre n'est pas présent dans cette bibliothèque" )
-        }
-        else {
-            render (status: 404,text: "la bibliotheque n'existe pas" )
-        }
-    }
 
 }
 

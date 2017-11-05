@@ -8,7 +8,6 @@ class UrlMappings {
         "/book/$bookID"(controller:'test',action:'showBook',method:'GET')
         "/books"(controller:'test',action:'showBooks',method:'GET')
         "/library/$libraryID/book/$bookID"(controller:'test',action:'showBookByLibrary',method:'GET')
-        "/library/$id/book/$id1"(controller:'test',action:'updateBookByLibrary',method:'PUT')
         "/library/$libraryID/books"(controller:'test',action:'showBooksByLibrary',method:'GET')
         "/book/$id"(controller:'test',action:'deleteBook',method:'DELETE')
         "/library/$id"(controller:'test',action:'deleteLibrary',method:'DELETE')

@@ -18,6 +18,6 @@ class Book {
 
     @Override
     String toString(){
-        return "id : "+ id + " \n name : "+name
+        return "id : "+ id + " \n name : "+name + " \n isbn : "+isbn + " \n author : "+author
     }
 }

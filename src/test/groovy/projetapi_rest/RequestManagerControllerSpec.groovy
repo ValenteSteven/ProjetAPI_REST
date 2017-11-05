@@ -3,7 +3,7 @@ package projetapi_rest
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class TestControllerSpec extends Specification implements ControllerUnitTest<TestController> {
+class RequestManagerControllerSpec extends Specification implements ControllerUnitTest<RequestManagerController> {
 
     def setup() {
     }

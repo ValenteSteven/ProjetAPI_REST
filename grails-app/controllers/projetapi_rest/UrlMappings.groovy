@@ -3,18 +3,18 @@ package projetapi_rest
 class UrlMappings {
 
     static mappings = {
-        "/library/$libraryID"(controller:'test',action:'showLibrary',method:'GET')
-        "/libraries"(controller:'test',action:'showLibraries',method:'GET')
-        "/book/$bookID"(controller:'test',action:'showBook',method:'GET')
-        "/books"(controller:'test',action:'showBooks',method:'GET')
-        "/library/$libraryID/book/$bookID"(controller:'test',action:'showBookByLibrary',method:'GET')
-        "/library/$libraryID/books"(controller:'test',action:'showBooksByLibrary',method:'GET')
-        "/book/$id"(controller:'test',action:'deleteBook',method:'DELETE')
-        "/library/$id"(controller:'test',action:'deleteLibrary',method:'DELETE')
-        "/book/$id"(controller:'test',action:'updateBook',method:'PUT')
-        "/library/$id"(controller:'test',action:'updateLibrary',method:'PUT')
-        "/library"(controller:'test',action:'createLibrary',method:'POST')
-        "/book"(controller:'test',action:'createBook',method:'POST')
+        "/library/$libraryID"(controller:'RequestManager',action:'showLibrary',method:'GET')
+        "/libraries"(controller:'RequestManager',action:'showLibraries',method:'GET')
+        "/book/$bookID"(controller:'RequestManager',action:'showBook',method:'GET')
+        "/books"(controller:'RequestManager',action:'showBooks',method:'GET')
+        "/library/$libraryID/book/$bookID"(controller:'RequestManager',action:'showBookByLibrary',method:'GET')
+        "/library/$libraryID/books"(controller:'RequestManager',action:'showBooksByLibrary',method:'GET')
+        "/book/$id"(controller:'RequestManager',action:'deleteBook',method:'DELETE')
+        "/library/$id"(controller:'RequestManager',action:'deleteLibrary',method:'DELETE')
+        "/book/$id"(controller:'RequestManager',action:'updateBook',method:'PUT')
+        "/library/$id"(controller:'RequestManager',action:'updateLibrary',method:'PUT')
+        "/library"(controller:'RequestManager',action:'createLibrary',method:'POST')
+        "/book"(controller:'RequestManager',action:'createBook',method:'POST')
 
 
         "/"(view:"/index")

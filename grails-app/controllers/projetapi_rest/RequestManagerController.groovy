@@ -2,7 +2,7 @@ package projetapi_rest
 
 import grails.converters.JSON
 
-class TestController {
+class RequestManagerController {
 
     //Obtenir un livre
     def showBook() {
@@ -70,7 +70,7 @@ class TestController {
     def updateLibrary(Library l){
         if( l != null){
             l.save(flush:true)
-            render l as JSON
+            render (status: 200,text: "bibliotheque mis a jour" )
         }
 
         else {
@@ -122,7 +122,7 @@ class TestController {
             render (status: 200,text: "OK" )
         }
         else {
-            render (status: 404,text: "la bibliothèque devant etre ajouté n'est pas valide" )
+            render (status: 404,text: "le livre devant etre ajouté n'est pas valide" )
         }
     }
 

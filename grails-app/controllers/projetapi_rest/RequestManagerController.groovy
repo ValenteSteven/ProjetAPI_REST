@@ -157,12 +157,83 @@ class RequestManagerController {
             if(libraryToCheck.getBooks().size() > 0){
                 render libraryToCheck.getBooks() as JSON
             }
-            render (status: 404,text: "aucun livre présent dans cette bibliothèque" )
+            else {
+                render (status: 404,text: "aucun livre présent dans cette bibliothèque" )
+            }
+
         }
         else {
             render (status: 404,text: "la bibliotheque n'existe pas" )
         }
 
+    }
+
+    def updateBookByLibrary(Book b) {
+        String stringLibraryId = String.valueOf(params.get("libraryID"))
+        Long libraryId = Long.parseLong(stringLibraryId)
+        String stringBookId = String.valueOf(params.get("id"))
+        long bookId =  Long.parseLong(stringBookId)
+        Library libraryToCheck = Library.findById(libraryId)
+        if (libraryToCheck != null) {
+                if (libraryToCheck.books.contains(Book.findById(bookId))){
+                    libraryToCheck.addToBooks(b).save(flush:true)
+                    b.save(flush:true)
+                    render (status: 200,text: "OK" )
+                }
+            else {
+                    render (status: 404,text: "le livre n'est pas présent dans cette bibliothèque" )
+                }
+        }
+        else {
+            render (status: 404,text: "la bibliotheque n'existe pas" )
+        }
+    }
+
+    def deleteBookByLibrary() {
+        String stringLibraryId = String.valueOf(params.get("libraryID"))
+        Long libraryId = Long.parseLong(stringLibraryId)
+        String stringBookId = String.valueOf(params.get("id"))
+        long bookId =  Long.parseLong(stringBookId)
+        Library libraryToCheck = Library.findById(libraryId)
+        if (libraryToCheck != null) {
+            if (libraryToCheck.books.contains(Book.findById(bookId))){
+                Book bookToDelete = Book.findById(bookId)
+                libraryToCheck.removeFromBooks(bookToDelete)
+                libraryToCheck.save(flush:true)
+                bookToDelete.delete(flush:true)
+
+                render (status: 200,text: "OK" )
+            }
+            else {
+                render (status: 404,text: "le livre n'est pas présent dans cette bibliothèque" )
+            }
+        }
+        else {
+            render (status: 404,text: "la bibliotheque n'existe pas" )
+        }
+    }
+
+    def createBookByLibrary(Book b) {
+        String stringLibraryId = String.valueOf(params.get("libraryID"))
+        Long libraryId = Long.parseLong(stringLibraryId)
+        Library libraryToCheck = Library.findById(libraryId)
+        if (libraryToCheck != null) {
+            if (b != null) {
+
+                libraryToCheck.addToBooks(b).save(flush: true)
+                b.save(flush:true)
+                render(status: 200, text: "OK")
+            }
+
+            else {
+                render(status: 404, text: "le livre est invalide")
+            }
+
+        }
+
+        else {
+            render (status: 404,text: "la bibliotheque n'existe pas" )
+        }
     }
 
 
